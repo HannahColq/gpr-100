@@ -1,4 +1,4 @@
-#include "../../project/VisualStudio/GPRO-FW/pch.h"
+#include "GPRO-FW/foo.h"
 
 int foo(int bar) {
 	return (bar + 1);
