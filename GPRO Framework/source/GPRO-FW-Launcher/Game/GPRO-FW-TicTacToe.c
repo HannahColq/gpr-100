@@ -66,7 +66,9 @@ int launchTicTacToe()
 
 	gs_tictactoe_reset(game);
 
-
+	// test
+	gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 1, 1);
+	gs_tictactoe_getSpaceState(game, 1, 1);
 
 	return 0;
 }
