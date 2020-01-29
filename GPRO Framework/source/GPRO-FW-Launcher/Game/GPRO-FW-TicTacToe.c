@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdbool.h>
 
 
 //-----------------------------------------------------------------------------
@@ -71,6 +72,10 @@ char getSpaceCharacter(gs_tictactoe game, int x, int y) {
 	}
 }
 
+bool checkWin(gs_tictactoe game) {
+	return false;
+}
+
 int launchTicTacToe()
 {
 	gs_tictactoe game = { 0 };
@@ -78,18 +83,44 @@ int launchTicTacToe()
 	gs_tictactoe_reset(game);
 
 	// test
-	//gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 1, 1);
+	//gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 0, 0);
 	//gs_tictactoe_getSpaceState(game, 1, 1);
 
-	// draw game board
-	gs_tictactoe_index xpos, ypos;
-	for (xpos = 0; xpos < GS_TICTACTOE_BOARD_WIDTH; xpos++) {
-		printf("%c", '|');
-		for (ypos = 0; ypos < GS_TICTACTOE_BOARD_HEIGHT; ypos++) {
-			printf("%c", getSpaceCharacter(game, xpos, ypos));
-			printf("%c", '|');
+	printf("Welcome to tic-tac-toe.\n(0,0) is the top left and (2,2) is in the bottom right.\n");
+	char turn = 'o';
+
+	while (!checkWin(game)) {
+		if (turn == 'o') {
+			turn = 'x';
 		}
-		printf("\n");
+		else {
+			turn = 'o';
+		}
+		// draw game board
+		printf("\n%c's turn:\n\n", turn);
+		gs_tictactoe_index xpos, ypos;
+		for (xpos = 0; xpos < GS_TICTACTOE_BOARD_WIDTH; xpos++) {
+			printf("%c", '|');
+			for (ypos = 0; ypos < GS_TICTACTOE_BOARD_HEIGHT; ypos++) {
+				printf("%c", getSpaceCharacter(game, xpos, ypos));
+				printf("%c", '|');
+			}
+			printf("\n");
+		}
+
+		int xInput, yInput;
+		printf("Enter the x coordinate: ");
+		scanf("%d", &xInput);
+		printf("Enter the y coordinate: ");
+		scanf("%d", &yInput);
+
+		if (turn == 'o') {
+			gs_tictactoe_setSpaceState(game, gs_tictactoe_space_o, xInput, yInput);
+		}
+		else {
+			gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, xInput, yInput);
+		}
+		
 	}
 	
 
