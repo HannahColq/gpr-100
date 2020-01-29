@@ -60,6 +60,17 @@ inline gs_tictactoe_index gs_tictactoe_reset(gs_tictactoe game)
 //-----------------------------------------------------------------------------
 // DEFINITIONS
 
+char getSpaceCharacter(gs_tictactoe game, int x, int y) {
+	switch (gs_tictactoe_getSpaceState(game, x, y)) {
+	case gs_tictactoe_space_open:
+		return ' ';
+	case gs_tictactoe_space_o:
+		return 'o';
+	case gs_tictactoe_space_x:
+		return 'x';
+	}
+}
+
 int launchTicTacToe()
 {
 	gs_tictactoe game = { 0 };
@@ -67,8 +78,17 @@ int launchTicTacToe()
 	gs_tictactoe_reset(game);
 
 	// test
-	gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 1, 1);
-	gs_tictactoe_getSpaceState(game, 1, 1);
+	//gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 1, 1);
+	//gs_tictactoe_getSpaceState(game, 1, 1);
+
+	// draw game board
+	gs_tictactoe_index xpos, ypos;
+	for (xpos = 0; xpos < GS_TICTACTOE_BOARD_WIDTH; xpos++) {
+		for (ypos = 0; ypos < GS_TICTACTOE_BOARD_HEIGHT; ypos++) {
+			printf("%c", getSpaceCharacter(game, xpos, ypos));
+		}
+	}
+	
 
 	return 0;
 }
