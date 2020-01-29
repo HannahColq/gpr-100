@@ -84,9 +84,12 @@ int launchTicTacToe()
 	// draw game board
 	gs_tictactoe_index xpos, ypos;
 	for (xpos = 0; xpos < GS_TICTACTOE_BOARD_WIDTH; xpos++) {
+		printf("%c", '|');
 		for (ypos = 0; ypos < GS_TICTACTOE_BOARD_HEIGHT; ypos++) {
 			printf("%c", getSpaceCharacter(game, xpos, ypos));
+			printf("%c", '|');
 		}
+		printf("\n");
 	}
 	
 
