@@ -73,6 +73,27 @@ char getSpaceCharacter(gs_tictactoe game, int x, int y) {
 }
 
 bool checkWin(gs_tictactoe game) {
+
+	// check rows and columns
+	for (int i = 0; i < GS_TICTACTOE_BOARD_HEIGHT; i++) {
+		if (game[i][0] == game[i][1] && game[i][1] == game[i][2] && game[i][0] != gs_tictactoe_space_open) {
+			return true;
+		}
+	}
+	for (int i = 0; i < GS_TICTACTOE_BOARD_WIDTH; i++) {
+		if (game[0][i] == game[1][i] && game[1][i] == game[2][i] && game[0][i] != gs_tictactoe_space_open) {
+			return true;
+		}
+	}
+	// check diagonals
+	if (game[0][0] == game[1][1] && game[1][1] == game[2][2] && game[0][0] != gs_tictactoe_space_open) {
+		return true;
+	}
+	if (game[0][2] == game[1][1] && game[1][1] == game[2][0] && game[0][2] != gs_tictactoe_space_open) {
+		return true;
+	}
+
+
 	return false;
 }
 
@@ -86,7 +107,7 @@ int launchTicTacToe()
 	//gs_tictactoe_setSpaceState(game, gs_tictactoe_space_x, 0, 0);
 	//gs_tictactoe_getSpaceState(game, 1, 1);
 
-	printf("Welcome to tic-tac-toe.\n(0,0) is the top left and (2,2) is in the bottom right.\n");
+	printf("\nWelcome to tic-tac-toe.\nChoose from rows and columns 0, 1, or 2.\n");
 	char turn = 'o';
 
 	while (!checkWin(game)) {
@@ -96,8 +117,14 @@ int launchTicTacToe()
 		else {
 			turn = 'o';
 		}
+
 		// draw game board
 		printf("\n%c's turn:\n\n", turn);
+		// draw top labels
+		for (int i = 0; i < GS_TICTACTOE_BOARD_WIDTH; i++) {
+			printf(" %d", i);
+		}
+		printf("\n");
 		gs_tictactoe_index xpos, ypos;
 		for (xpos = 0; xpos < GS_TICTACTOE_BOARD_WIDTH; xpos++) {
 			printf("%c", '|');
@@ -105,13 +132,13 @@ int launchTicTacToe()
 				printf("%c", getSpaceCharacter(game, xpos, ypos));
 				printf("%c", '|');
 			}
-			printf("\n");
+			printf(" %d\n", xpos);
 		}
 
 		int xInput, yInput;
-		printf("Enter the x coordinate: ");
+		printf("Enter the horizontal row: ");
 		scanf("%d", &xInput);
-		printf("Enter the y coordinate: ");
+		printf("Enter the vertical column: ");
 		scanf("%d", &yInput);
 
 		if (turn == 'o') {
@@ -123,6 +150,7 @@ int launchTicTacToe()
 		
 	}
 	
+	printf("\n\n%c wins!\n\n", turn);
 
 	return 0;
 }
