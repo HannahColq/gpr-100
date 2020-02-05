@@ -159,12 +159,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\GPRO-FW\common.h" />
     <ClInclude Include="..\..\..\include\GPRO-FW\foo.h" />
     <ClInclude Include="..\..\..\include\GPRO-FW\game.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\GPRO-FW\common.c" />
     <ClCompile Include="..\..\..\source\GPRO-FW\foo.c" />
     <ClCompile Include="..\..\..\source\GPRO-FW\game.c" />
     <ClCompile Include="GPRO-FW.cpp" />

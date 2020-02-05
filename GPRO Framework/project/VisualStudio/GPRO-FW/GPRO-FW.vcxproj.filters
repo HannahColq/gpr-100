@@ -27,6 +27,9 @@
     <ClInclude Include="..\..\..\include\GPRO-FW\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\GPRO-FW\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GPRO-FW.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\GPRO-FW\game.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\GPRO-FW\common.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

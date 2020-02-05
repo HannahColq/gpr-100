@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <GPRO-FW/common.h>
 
 //-----------------------------------------------------------------------------
 // DECLARATIONS
@@ -145,11 +146,8 @@ int launchBattleship()
 		printf("Place your patrol boat.\n");
 		for (int i = 1; i <= 2; i++)
 		{
-			int xInput, yInput;
-			printf("Enter the horizontal row for spot %d: ", i);
-			scanf("%d", &xInput);
-			printf("Enter the vertical column for spot %d: ", i);
-			scanf("%d", &yInput);
+			int xInput = getXInput();
+			int yInput = getYInput();
 			gs_checkers_setSpaceState(game, gs_battleship_space_patrol2, player, xInput, yInput);
 		}
 
@@ -158,11 +156,8 @@ int launchBattleship()
 		printf("Place your submarine.\n");
 		for (int i = 1; i <= 3; i++)
 		{
-			int xInput, yInput;
-			printf("Enter the horizontal row for spot %d: ", i);
-			scanf("%d", &xInput);
-			printf("Enter the vertical column for spot %d: ", i);
-			scanf("%d", &yInput);
+			int xInput = getXInput();
+			int yInput = getYInput();
 			gs_checkers_setSpaceState(game, gs_battleship_space_submarine3, player, xInput, yInput);
 		}
 
@@ -171,11 +166,8 @@ int launchBattleship()
 		printf("Place your destroyer.\n");
 		for (int i = 1; i <= 3; i++)
 		{
-			int xInput, yInput;
-			printf("Enter the horizontal row for spot %d: ", i);
-			scanf("%d", &xInput);
-			printf("Enter the vertical column for spot %d: ", i);
-			scanf("%d", &yInput);
+			int xInput = getXInput();
+			int yInput = getYInput();
 			gs_checkers_setSpaceState(game, gs_battleship_space_destroyer3, player, xInput, yInput);
 		}
 
@@ -184,11 +176,8 @@ int launchBattleship()
 		printf("Place your battleship.\n");
 		for (int i = 1; i <= 4; i++)
 		{
-			int xInput, yInput;
-			printf("Enter the horizontal row for spot %d: ", i);
-			scanf("%d", &xInput);
-			printf("Enter the vertical column for spot %d: ", i);
-			scanf("%d", &yInput);
+			int xInput = getXInput();
+			int yInput = getYInput();
 			gs_checkers_setSpaceState(game, gs_battleship_space_battleship4, player, xInput, yInput);
 		}
 
@@ -197,11 +186,8 @@ int launchBattleship()
 		printf("Place your carrier.\n");
 		for (int i = 1; i <= 5; i++)
 		{
-			int xInput, yInput;
-			printf("Enter the horizontal row for spot %d: ", i);
-			scanf("%d", &xInput);
-			printf("Enter the vertical column for spot %d: ", i);
-			scanf("%d", &yInput);
+			int xInput = getXInput();
+			int yInput = getYInput();
 			gs_checkers_setSpaceState(game, gs_battleship_space_carrier5, player, xInput, yInput);
 		}
 	}
@@ -218,11 +204,8 @@ int launchBattleship()
 
 		drawGameBoard(game, player);
 
-		int xInput, yInput;
-		printf("Enter the horizontal row: ");
-		scanf("%d", &xInput);
-		printf("Enter the vertical column: ");
-		scanf("%d", &yInput);
+		int xInput = getXInput();
+		int yInput = getYInput();
 
 		if (player == 0) {
 			if (gs_checkers_getSpaceState(game, 1, xInput, yInput) == gs_battleship_space_open || gs_checkers_getSpaceState(game, 1, xInput, yInput) == gs_battleship_space_enemy_hit) {

@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <GPRO-FW/common.h>
 
 
 //-----------------------------------------------------------------------------
@@ -135,11 +136,8 @@ int launchTicTacToe()
 			printf(" %d\n", xpos);
 		}
 
-		int xInput, yInput;
-		printf("Enter the horizontal row: ");
-		scanf("%d", &xInput);
-		printf("Enter the vertical column: ");
-		scanf("%d", &yInput);
+		int xInput = getXInput();
+		int yInput = getYInput();
 
 		if (turn == 'o') {
 			gs_tictactoe_setSpaceState(game, gs_tictactoe_space_o, xInput, yInput);
